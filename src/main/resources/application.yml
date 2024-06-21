@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: dep
+  datasource:
+    url: jdbc:mysql://localhost:3306/modelobd
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+#    producer:
+#      bootstrap-servers: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      group-id: consumer-committed
+    listener:
+      ack-mode: manual
+topic:
+  topic-prod: topic-pedido-efetuado
+  topic-cons: topic-pedido-processado
+  topic-1: topic-pedido-efetuado
+  topic-2: topic-pedido-processado
+
+app:
+  tempo-nack-ms: 10000
